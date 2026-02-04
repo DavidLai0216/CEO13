@@ -3,24 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>創業主班13期 - 專屬網站</title>
+    <title>政大EMBA創業主精修班第13期 - 班級官網</title>
     <style>
         /* --- 基礎設定 --- */
         :root {
-            --primary-blue: #0f172a; /* 深藍色 */
-            --accent-gold: #fbbf24;  /* 金色 */
-            --light-gray: #f3f4f6;
-            --text-dark: #1f2937;
+            --primary-blue: #003366; /* 政大穩重深藍 */
+            --accent-gold: #C5A059;  /* 質感香檳金 */
+            --light-gray: #f8f9fa;
+            --text-dark: #333333;
         }
-        html {
-            scroll-behavior: smooth; /* 讓點擊連結時有平滑滾動效果 */
-        }
+        html { scroll-behavior: smooth; }
         body {
-            font-family: "Microsoft JhengHei", "Heiti TC", sans-serif;
+            font-family: "Microsoft JhengHei", "PingFang TC", sans-serif;
             margin: 0;
             padding: 0;
             background-color: #fff;
             color: var(--text-dark);
+            line-height: 1.6;
         }
         a { text-decoration: none; color: inherit; }
         
@@ -32,38 +31,45 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky; /* 讓導覽列黏在頂端 */
+            position: sticky;
             top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
-        .logo { font-size: 24px; font-weight: bold; color: var(--accent-gold); }
-        .nav-links a { margin-left: 20px; font-size: 16px; transition: 0.3s; }
-        .nav-links a:hover { color: var(--accent-gold); }
+        .logo { font-size: 20px; font-weight: bold; letter-spacing: 1px; display: flex; align-items: center; gap: 10px; }
+        .logo span { color: var(--accent-gold); }
+        .nav-links a { margin-left: 25px; font-size: 15px; font-weight: 500; transition: 0.3s; opacity: 0.9; }
+        .nav-links a:hover { color: var(--accent-gold); opacity: 1; }
         .login-btn {
             background: var(--accent-gold);
             color: var(--primary-blue);
-            padding: 8px 20px;
-            border-radius: 5px;
+            padding: 8px 24px;
+            border-radius: 4px;
             font-weight: bold;
         }
 
-        /* --- 輪播區 (Hero) --- */
+        /* --- 輪播區 (Hero) - 使用您上傳的照片 --- */
         .hero {
-            height: 400px;
-            background-color: #333;
+            height: 550px; /* 調整高度讓合照更清楚 */
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
             color: white;
             text-align: center;
-            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            /* 這裡設定了您提供的照片檔名，請確保照片已上傳到 GitHub */
+            background-image: linear-gradient(rgba(0,51,102,0.3), rgba(0,51,102,0.5)), url('586585233_4066708516974087_816223864076002654_n.jpg');
             background-size: cover;
-            background-position: center;
+            background-position: center top; /* 讓照片重心偏上方，避免切到人頭 */
         }
-        .hero h1 { font-size: 48px; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
-        .hero p { font-size: 20px; color: var(--accent-gold); }
+        .hero-content { max-width: 800px; padding: 20px; animation: fadeIn 1.5s ease; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); }
+        .hero h1 { font-size: 56px; margin-bottom: 15px; letter-spacing: 2px; }
+        .hero p { font-size: 24px; color: var(--accent-gold); font-weight: bold; letter-spacing: 1px; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
         /* --- 主要內容容器 --- */
         .container {
@@ -75,217 +81,324 @@
         /* --- 下次上課卡片 (核心功能) --- */
         .next-class-section {
             background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
             overflow: hidden;
             display: flex;
-            margin-top: -60px; /* 讓卡片往上浮動壓在輪播圖上 */
+            margin-top: -80px; /* 往上浮動 */
             position: relative;
-            border-top: 5px solid var(--accent-gold);
+            border-top: 6px solid var(--accent-gold);
             flex-wrap: wrap;
         }
-        .class-info {
-            padding: 40px;
-            flex: 2;
-            border-right: 1px solid #eee;
-        }
-        .class-action {
-            padding: 40px;
-            flex: 1;
-            background-color: #fafafa;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
+        .class-info { padding: 50px 40px; flex: 3; border-right: 1px solid #eee; }
+        .class-action { padding: 40px; flex: 2; background-color: #fafafa; display: flex; flex-direction: column; justify-content: center; }
+        
         .tag {
             background: var(--primary-blue);
             color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 14px;
-            margin-bottom: 15px;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-size: 13px;
+            margin-bottom: 20px;
             display: inline-block;
+            font-weight: bold;
+            letter-spacing: 1px;
         }
-        .class-title { font-size: 28px; font-weight: bold; margin: 10px 0; }
-        .class-detail { margin: 5px 0; color: #666; font-size: 16px; display: flex; align-items: center; }
-        .class-detail span { margin-right: 10px; }
-        
+        .class-title { font-size: 32px; font-weight: bold; margin: 0 0 20px 0; color: #222; }
+        .class-meta { display: grid; grid-template-columns: 1fr; gap: 15px; margin-bottom: 25px; } /* 改為單欄顯示更清晰 */
+        .meta-item { display: flex; align-items: center; color: #333; font-size: 16px; font-weight: 500; }
+        .meta-icon { margin-right: 12px; width: 25px; text-align: center; color: var(--primary-blue); font-size: 18px; }
+
         .download-btn {
             background-color: var(--primary-blue);
             color: white;
             width: 100%;
-            padding: 15px;
+            padding: 16px;
             text-align: center;
-            border-radius: 8px;
+            border-radius: 6px;
             font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
             transition: 0.3s;
             border: none;
-            margin-bottom: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        .download-btn:hover { background-color: #2c3e50; }
+        .download-btn:hover { background-color: #002244; transform: translateY(-2px); }
         
-        .comment-preview {
+        .comment-board {
+            margin-top: 25px;
             background: white;
-            border: 1px solid #eee;
-            padding: 15px;
+            border: 1px solid #e1e4e8;
             border-radius: 8px;
-            width: 100%;
-            box-sizing: border-box;
-            font-size: 14px;
-            color: #555;
+            padding: 20px;
         }
+        .comment-title { font-size: 14px; color: #888; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        .comment-item { margin-bottom: 12px; font-size: 14px; line-height: 1.5; }
+        .comment-user { color: var(--primary-blue); font-weight: bold; }
+        .comment-text { color: #444; }
 
-        /* --- 最新消息 (修正錨點定位問題) --- */
-        #news {
-            scroll-margin-top: 100px; /* 確保點擊連結後，標題不會被導覽列遮住 */
-        }
-        .section-title { font-size: 24px; font-weight: bold; margin: 50px 0 30px 0; border-left: 5px solid var(--primary-blue); padding-left: 15px; }
-        .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .news-card { background: white; border: 1px solid #eee; border-radius: 10px; overflow: hidden; transition: 0.3s; }
-        .news-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .news-content { padding: 20px; }
-        .news-date { color: #888; font-size: 14px; }
-        .news-title { font-weight: bold; margin: 10px 0; font-size: 18px; }
+        /* --- 標題樣式 --- */
+        #news { scroll-margin-top: 100px; }
+        .section-header { text-align: center; margin: 80px 0 50px 0; }
+        .section-title { font-size: 32px; font-weight: bold; color: var(--primary-blue); display: inline-block; position: relative; }
+        .section-title::after { content: ''; display: block; width: 60px; height: 4px; background: var(--accent-gold); margin: 15px auto 0 auto; }
 
-        /* --- 成員介紹 (Tab 模擬) --- */
-        .member-tabs { display: flex; gap: 10px; margin-bottom: 20px; overflow-x: auto; }
-        .tab { padding: 10px 20px; background: #eee; border-radius: 20px; cursor: pointer; white-space: nowrap; }
-        .tab.active { background: var(--primary-blue); color: white; }
+        /* --- 最新消息 (Grid) --- */
+        .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .news-card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; border: 1px solid #eee; }
+        .news-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .news-img { height: 180px; background-color: #ddd; background-size: cover; background-position: center; }
+        .news-content { padding: 25px; }
+        .news-date { color: var(--accent-gold); font-weight: bold; font-size: 13px; margin-bottom: 8px; }
+        .news-title { font-weight: bold; font-size: 18px; margin-bottom: 10px; line-height: 1.4; }
+        .news-desc { color: #666; font-size: 14px; }
+
+        /* --- 成員介紹 --- */
+        .member-tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap; }
+        .tab { padding: 10px 25px; background: white; border: 1px solid #ddd; border-radius: 30px; cursor: pointer; transition: 0.3s; color: #666; font-weight: 500; }
+        .tab.active, .tab:hover { background: var(--primary-blue); color: white; border-color: var(--primary-blue); }
         
-        .member-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 20px; }
-        .member-card { text-align: center; }
-        .member-avatar { width: 100px; height: 100px; background: #ddd; border-radius: 50%; margin: 0 auto 10px auto; display: flex; align-items: center; justify-content: center; color: #888; }
-        .member-name { font-weight: bold; }
-        .member-role { font-size: 12px; color: #666; }
+        .member-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 30px; }
+        .member-card { text-align: center; group; }
+        .member-avatar { 
+            width: 120px; height: 120px; 
+            margin: 0 auto 15px auto; 
+            border-radius: 50%; 
+            overflow: hidden; 
+            border: 3px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background-color: #f0f0f0;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .member-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .member-name { font-weight: bold; font-size: 18px; color: var(--primary-blue); }
+        .member-role { font-size: 13px; color: #888; margin-top: 4px; font-weight: bold; }
+        
+        /* 替換頭像用的暫位圖示字體 */
+        .avatar-placeholder { font-size: 40px; color: #ccc; }
 
         /* --- 企業秀 --- */
-        .biz-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        .biz-card { height: 150px; background: var(--light-gray); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #aaa; border: 2px dashed #ccc; }
+        .biz-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .biz-card { 
+            height: 120px; background: white; border-radius: 8px; 
+            display: flex; flex-direction: column; align-items: center; justify-content: center; 
+            border: 1px solid #eee; transition: 0.3s; cursor: pointer;
+            padding: 10px; text-align: center;
+        }
+        .biz-card:hover { border-color: var(--accent-gold); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .biz-logo { font-weight: bold; color: #555; font-size: 18px; margin-bottom: 5px; }
+        .biz-industry { font-size: 12px; color: #aaa; background: #f8f8f8; padding: 2px 8px; border-radius: 4px; }
 
         /* --- Footer --- */
-        footer { background: var(--primary-blue); color: white; text-align: center; padding: 40px; margin-top: 60px; }
+        footer { background: var(--primary-blue); color: white; text-align: center; padding: 60px 20px; margin-top: 80px; }
+        .footer-logo { font-size: 20px; font-weight: bold; margin-bottom: 20px; color: var(--accent-gold); }
 
-        /* --- 手機版調整 --- */
+        /* --- RWD --- */
         @media (max-width: 768px) {
             .next-class-section { flex-direction: column; }
-            .class-info { border-right: none; border-bottom: 1px solid #eee; }
-            .biz-grid { grid-template-columns: 1fr; }
+            .class-info { border-right: none; border-bottom: 1px solid #eee; padding: 30px 20px; }
+            .biz-grid { grid-template-columns: repeat(2, 1fr); }
             .hero h1 { font-size: 32px; }
-            .nav-links { display: none; } /* 手機版暫時隱藏選單 */
+            .nav-links { display: none; }
+            .logo { font-size: 16px; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">Startup 13th</div>
+        <div class="logo">政大EMBA創業主精修班第十三期</div>
         <nav class="nav-links">
             <a href="#">首頁</a>
-            <a href="#news">最新消息</a> <a href="#">課程回顧</a>
+            <a href="#news">最新消息</a>
+            <a href="#">課程回顧</a>
             <a href="#">成員介紹</a>
-            <a href="#">企業秀</a>
-            <a href="#" class="login-btn">學員登入</a>
+            <a href="#biz">學員企業秀</a>
+            <a href="#" class="login-btn">會員登入</a>
         </nav>
     </header>
 
     <section class="hero">
-        <div>
-            <h1>聚首創13，共創新商機</h1>
-            <p>歡迎回到創業主班第 13 期學員專屬空間</p>
+        <div class="hero-content">
+            <h1>共學 ‧ 共創 ‧ 共好</h1>
+            <p>匯聚菁英，再創高峰</p>
         </div>
     </section>
 
     <div class="container">
         <div class="next-class-section">
             <div class="class-info">
-                <span class="tag">最近一次課程</span>
-                <div class="class-title">數位轉型與 AI 應用實戰</div>
-                <div class="class-detail">📅 日期：11月 24日 (週日) 13:30</div>
-                <div class="class-detail">📍 地點：台北文創大樓 6F</div>
-                <div class="class-detail">👨‍🏫 講師：李數據 教授</div>
-                <p style="margin-top: 15px; color: #444; line-height: 1.6;">
-                    本課程將探討生成式 AI 如何協助中小企業降低成本、提升效率。請學員務必攜帶筆電。
+                <span class="tag">Next Session - 本週課程</span>
+                <div class="class-title">經營策略實務分析</div>
+                
+                <div class="class-meta">
+                    <div class="meta-item"><span class="meta-icon">📅</span> 2026年2月7日 (週六) 09:00~12:00</div>
+                    <div class="meta-item"><span class="meta-icon">📍</span> 政大商學院 11樓 秀明講堂</div>
+                    <div class="meta-item"><span class="meta-icon">👨‍🏫</span> 講師：司徒達賢 名譽教授</div>
+                </div>
+
+                <p style="color: #666; border-left: 4px solid #eee; padding-left: 15px; line-height: 1.8;">
+                    <strong>課程內容：</strong> 本次課程會由司徒老師針對學員提出的公司經營策略問題，進行回答或分析。請學員把握與大師對談的機會。
                 </p>
             </div>
+            
             <div class="class-action">
-                <button class="download-btn" onclick="alert('需登入後才能下載講義！')">📥 下載課程講義 (PDF)</button>
-                <div class="comment-preview">
-                    <strong>💬 最新留言：</strong><br>
-                    <span style="color:#007bff">王小明 (第1組)：</span> 請問老師會教 ChatGPT 嗎？<br>
-                    <span style="color:#888; font-size:12px;">助教回覆：有的，這是重點章節。</span>
+                <button class="download-btn" onclick="alert('系統提示：\n請先登入會員帳號，即可下載司徒老師課程講義 (PDF)。')">
+                    📥 下載課程講義 (會員限定)
+                </button>
+                
+                <div class="comment-board">
+                    <div class="comment-title">💬 班級互動留言板 (最新 3 則)</div>
+                    
+                    <div class="comment-item">
+                        <span class="comment-user">李XX (第2組)：</span>
+                        <span class="comment-text">請問提問單是要先寄給助教嗎？還是當天現場提問？</span>
+                    </div>
+                    
+                    <div class="comment-item">
+                        <span class="comment-user">助教 (回答)：</span>
+                        <span class="comment-text">建議先彙整給班代，老師可以先閱讀，效果會更好喔！</span>
+                    </div>
+
+                    <div class="comment-item">
+                        <span class="comment-user">王XX (第5組)：</span>
+                        <span class="comment-text">期待再次聽到司徒老師的教誨！大家週六見。</span>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <h2 id="news" class="section-title">📆 最新活動與公告</h2>
+        <div class="section-header">
+            <h2 id="news" class="section-title">📆 最新活動與公告</h2>
+        </div>
+        
         <div class="news-grid">
             <div class="news-card">
+                <div class="news-img" style="background-image: url('https://images.unsplash.com/photo-1571505089307-b2e2d67a14fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');"></div>
                 <div class="news-content">
-                    <div class="news-date">2023.10.20</div>
-                    <div class="news-title">12月聖誕聚餐地點投票</div>
-                    <p>請大家在週五前完成投票，目前選項有...</p>
+                    <div class="news-date">2026.4.26</div>
+                    <div class="news-title">台中美學之旅 (第四組主辦)</div>
+                    <p class="news-desc">4/26(日)、4/27(一) 由第四組帶大家去台中來場美學之旅，詳細行程與住宿安排請見群組公告。</p>
                 </div>
             </div>
+            
             <div class="news-card">
+                <div class="news-img" style="background-image: url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');"></div>
                 <div class="news-content">
-                    <div class="news-date">2023.10.18</div>
-                    <div class="news-title">企業參訪：台積電創新館</div>
-                    <p>限額 40 名，請儘速向班媽報名。</p>
+                    <div class="news-date">2026.3.15</div>
+                    <div class="news-title">創13 春季高爾夫球敘</div>
+                    <p class="news-desc">天氣回暖，讓我們以球會友。地點：大溪高爾夫球場，請向康樂股長報名。</p>
                 </div>
             </div>
+            
             <div class="news-card">
+                <div class="news-img" style="background-image: url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');"></div>
                 <div class="news-content">
-                    <div class="news-date">2023.10.15</div>
-                    <div class="news-title">第 13 期通訊錄更新通知</div>
-                    <p>新版通訊錄已上傳，請至會員專區下載。</p>
+                    <div class="news-date">2026.2.01</div>
+                    <div class="news-title">2026 年度課程表更新</div>
+                    <p class="news-desc">新學期的課程安排已確認，包含多場重量級大師講座，請大家預留時間。</p>
                 </div>
             </div>
         </div>
 
-        <h2 class="section-title">👥 創13 成員介紹</h2>
+        <div class="section-header">
+            <h2 class="section-title">👥 創13 核心團隊 & 成員</h2>
+        </div>
+        
         <div class="member-tabs">
-            <div class="tab active">總導師群</div>
+            <div class="tab active">核心團隊</div>
             <div class="tab">第 1 組</div>
             <div class="tab">第 2 組</div>
             <div class="tab">第 3 組</div>
             <div class="tab">第 4 組</div>
             <div class="tab">第 5 組</div>
         </div>
+        
         <div class="member-grid">
             <div class="member-card">
-                <div class="member-avatar">照片</div>
-                <div class="member-name">張總導</div>
+                <div class="member-avatar">
+                     <span class="avatar-placeholder">👨‍🏫</span>
+                </div>
+                <div class="member-name">于卓民</div>
                 <div class="member-role">總導師</div>
             </div>
+
             <div class="member-card">
-                <div class="member-avatar">照片</div>
-                <div class="member-name">陳班媽</div>
-                <div class="member-role">班務總管</div>
+                <div class="member-avatar">
+                    <span class="avatar-placeholder">👨‍🏫</span>
+                </div>
+                <div class="member-name">黃國峯</div>
+                <div class="member-role">導師</div>
             </div>
+            
             <div class="member-card">
-                <div class="member-avatar">照片</div>
-                <div class="member-name">林助教</div>
+                <div class="member-avatar">
+                    <span class="avatar-placeholder">👩‍💼</span>
+                </div>
+                <div class="member-name">鄒旭珍</div>
+                <div class="member-role">班媽</div>
+            </div>
+            
+            <div class="member-card">
+                <div class="member-avatar">
+                    <span class="avatar-placeholder">🎓</span>
+                </div>
+                <div class="member-name">助教</div>
                 <div class="member-role">行政支援</div>
             </div>
              <div class="member-card">
-                <div class="member-avatar">照片</div>
-                <div class="member-name">王大明</div>
-                <div class="member-role">輔導員</div>
+                <div class="member-avatar">
+                    <span class="avatar-placeholder">🎓</span>
+                </div>
+                <div class="member-name">助教</div>
+                <div class="member-role">行政支援</div>
             </div>
+
         </div>
 
-        <h2 class="section-title">🚀 學員企業秀 (隨機輪播)</h2>
+        <div class="section-header">
+            <h2 id="biz" class="section-title">🚀 優質學員企業展示</h2>
+        </div>
+        
         <div class="biz-grid">
-            <div class="biz-card">大明食品 (Logo)</div>
-            <div class="biz-card">小華科技 (Logo)</div>
-            <div class="biz-card">美美生技 (Logo)</div>
+            <div class="biz-card">
+                <div class="biz-logo">台富精密</div>
+                <div class="biz-industry">CNC 加工 / 航太零組件</div>
+            </div>
+            <div class="biz-card">
+                <div class="biz-logo">日新生物</div>
+                <div class="biz-industry">保健食品代工</div>
+            </div>
+            <div class="biz-card">
+                <div class="biz-logo">寬宏建設</div>
+                <div class="biz-industry">房地產開發</div>
+            </div>
+            <div class="biz-card">
+                <div class="biz-logo">雲端數位</div>
+                <div class="biz-industry">AI 行銷系統</div>
+            </div>
+            <div class="biz-card">
+                <div class="biz-logo">好味餐飲</div>
+                <div class="biz-industry">連鎖加盟總部</div>
+            </div>
+            <div class="biz-card">
+                <div class="biz-logo">永安物流</div>
+                <div class="biz-industry">冷鏈倉儲運輸</div>
+            </div>
+            <div class="biz-card">
+                <div class="biz-logo">光學科技</div>
+                <div class="biz-industry">半導體檢測設備</div>
+            </div>
+            <div class="biz-card">
+                <div class="biz-logo">美麗生醫</div>
+                <div class="biz-industry">醫美診所聯盟</div>
+            </div>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2023 創業主班第 13 期 | 僅供內部學員使用</p>
+        <div class="footer-logo">政大EMBA創業主精修班第十三期</div>
+        <p>&copy; 2026 創業主班第 13 期｜內部資源共享平台<br>系統維護：創13 資訊組</p>
     </footer>
 
 </body>
