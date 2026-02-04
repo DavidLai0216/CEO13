@@ -12,6 +12,9 @@
             --light-gray: #f3f4f6;
             --text-dark: #1f2937;
         }
+        html {
+            scroll-behavior: smooth; /* 讓點擊連結時有平滑滾動效果 */
+        }
         body {
             font-family: "Microsoft JhengHei", "Heiti TC", sans-serif;
             margin: 0;
@@ -29,7 +32,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
+            position: sticky; /* 讓導覽列黏在頂端 */
             top: 0;
             z-index: 100;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -134,7 +137,10 @@
             color: #555;
         }
 
-        /* --- 最新消息 --- */
+        /* --- 最新消息 (修正錨點定位問題) --- */
+        #news {
+            scroll-margin-top: 100px; /* 確保點擊連結後，標題不會被導覽列遮住 */
+        }
         .section-title { font-size: 24px; font-weight: bold; margin: 50px 0 30px 0; border-left: 5px solid var(--primary-blue); padding-left: 15px; }
         .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
         .news-card { background: white; border: 1px solid #eee; border-radius: 10px; overflow: hidden; transition: 0.3s; }
@@ -167,7 +173,7 @@
             .class-info { border-right: none; border-bottom: 1px solid #eee; }
             .biz-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 32px; }
-            .nav-links { display: none; } /* 暫時隱藏手機版選單 */
+            .nav-links { display: none; } /* 手機版暫時隱藏選單 */
         }
     </style>
 </head>
@@ -177,7 +183,7 @@
         <div class="logo">Startup 13th</div>
         <nav class="nav-links">
             <a href="#">首頁</a>
-            <a href="#">課程回顧</a>
+            <a href="#news">最新消息</a> <a href="#">課程回顧</a>
             <a href="#">成員介紹</a>
             <a href="#">企業秀</a>
             <a href="#" class="login-btn">學員登入</a>
@@ -213,7 +219,7 @@
             </div>
         </div>
 
-        <h2 class="section-title">📆 最新活動與公告</h2>
+        <h2 id="news" class="section-title">📆 最新活動與公告</h2>
         <div class="news-grid">
             <div class="news-card">
                 <div class="news-content">
